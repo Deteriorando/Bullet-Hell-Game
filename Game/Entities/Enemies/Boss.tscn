@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dv1kl4gvbd8iy"]
+
+[ext_resource type="Script" uid="uid://ban5mdh132iap" path="res://Scripts/GameSystem/Entities/EntitySystem/Enemies/Boss.cs" id="1_5nwfw"]
+[ext_resource type="PackedScene" uid="uid://b1ulayieo487a" path="res://Game/Entities/bullet.tscn" id="2_eh3xx"]
+[ext_resource type="Texture2D" uid="uid://dj5mc7af17hrf" path="res://Game/Assets/Enemies/Sprite-0001.png" id="3_eh3xx"]
+[ext_resource type="Script" uid="uid://cfr8cj60qljnw" path="res://Scripts/GameSystem/Entities/FSMSystem/FiniteStateMachine.cs" id="4_6b4so"]
+[ext_resource type="Script" uid="uid://c1lminc2b8vew" path="res://Scripts/GameSystem/Entities/EntitySystem/Enemies/StatesAttacks/IdleState.cs" id="5_pvwvo"]
+[ext_resource type="Script" uid="uid://bfy5bn7oul100" path="res://Scripts/GameSystem/Entities/EntitySystem/Enemies/StatesAttacks/AttackSpiralState.cs" id="6_q18f3"]
+[ext_resource type="Script" uid="uid://buy6g7c2lkfe6" path="res://Scripts/GameSystem/Entities/EntitySystem/Enemies/StatesAttacks/AttackSquareState.cs" id="7_38dpv"]
+[ext_resource type="Script" uid="uid://cfballiwd5wx1" path="res://Scripts/GameSystem/Entities/EntitySystem/Enemies/StatesAttacks/AttackBurstState.cs" id="8_yrha7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pflxf"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eh3xx"]
+size = Vector2(32, 32)
+
+[node name="Boss" type="CharacterBody2D" unique_id=1386017040 node_paths=PackedStringArray("ShootPoint")]
+collision_mask = 4
+script = ExtResource("1_5nwfw")
+BulletScene = ExtResource("2_eh3xx")
+ShootPoint = NodePath("ShootPoint")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1763968677]
+shape = SubResource("RectangleShape2D_pflxf")
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=974583294]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2108533498]
+scale = Vector2(2, 2)
+texture = ExtResource("3_eh3xx")
+
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=1738099252]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=1132492383]
+shape = SubResource("RectangleShape2D_eh3xx")
+
+[node name="FSM" type="Node2D" parent="." unique_id=1306947232]
+script = ExtResource("4_6b4so")
+InitialState = NodePath("IdleState")
+
+[node name="IdleState" type="Node2D" parent="FSM" unique_id=416228746 node_paths=PackedStringArray("IdleTimer")]
+script = ExtResource("5_pvwvo")
+IdleTimer = NodePath("CooldownAttack")
+
+[node name="CooldownAttack" type="Timer" parent="FSM/IdleState" unique_id=1795495464]
+wait_time = 0.4
+one_shot = true
+
+[node name="Duration" type="Timer" parent="FSM/IdleState" unique_id=1264809160]
+wait_time = 5.0
+one_shot = true
+
+[node name="AttackSquareState" type="Node2D" parent="FSM" unique_id=996799188 node_paths=PackedStringArray("CooldownTimer", "DurationTimer")]
+script = ExtResource("7_38dpv")
+CooldownTimer = NodePath("CooldownAttack")
+DurationTimer = NodePath("Duration")
+
+[node name="CooldownAttack" type="Timer" parent="FSM/AttackSquareState" unique_id=36131839]
+one_shot = true
+
+[node name="Duration" type="Timer" parent="FSM/AttackSquareState" unique_id=1242080758]
+wait_time = 6.0
+one_shot = true
+
+[node name="AttackSpiralState" type="Node2D" parent="FSM" unique_id=1368025164 node_paths=PackedStringArray("CooldownTimer", "DurationTimer")]
+script = ExtResource("6_q18f3")
+CooldownTimer = NodePath("CooldownAttack")
+DurationTimer = NodePath("Duration")
+AngleOffset = -7.38
+AngleStep = 2.48
+
+[node name="CooldownAttack" type="Timer" parent="FSM/AttackSpiralState" unique_id=1163773926]
+wait_time = 0.05
+one_shot = true
+
+[node name="Duration" type="Timer" parent="FSM/AttackSpiralState" unique_id=2048157495]
+wait_time = 6.0
+one_shot = true
+
+[node name="AttackBurstState" type="Node2D" parent="FSM" unique_id=724709902 node_paths=PackedStringArray("CooldownTimer", "DurationTimer")]
+script = ExtResource("8_yrha7")
+CooldownTimer = NodePath("CooldownAttack")
+DurationTimer = NodePath("Duration")
+AngleOffset = -2.13
+AngleStep = 1.285
+
+[node name="CooldownAttack" type="Timer" parent="FSM/AttackBurstState" unique_id=925759807]
+one_shot = true
+
+[node name="Duration" type="Timer" parent="FSM/AttackBurstState" unique_id=1054882409]
+wait_time = 5.0
+one_shot = true

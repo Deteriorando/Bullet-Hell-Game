@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joguinho 1", "Joguinho 1.csproj", "{65527E05-EAB7-4B9B-92AC-3F07E01A0C95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65527E05-EAB7-4B9B-92AC-3F07E01A0C95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65527E05-EAB7-4B9B-92AC-3F07E01A0C95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65527E05-EAB7-4B9B-92AC-3F07E01A0C95}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{65527E05-EAB7-4B9B-92AC-3F07E01A0C95}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{65527E05-EAB7-4B9B-92AC-3F07E01A0C95}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{65527E05-EAB7-4B9B-92AC-3F07E01A0C95}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal

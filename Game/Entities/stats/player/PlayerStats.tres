@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://bey5yel6lr76m"]
+
+[ext_resource type="Script" uid="uid://d27hyi16c6fa" path="res://Scripts/GameSystem/Entities/PlayerSystem/PlayerStats.cs" id="1_w038v"]
+
+[resource]
+script = ExtResource("1_w038v")
+Life = 5
+Speed = 500
+Stamina = 100

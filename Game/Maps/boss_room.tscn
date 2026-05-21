@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cruigayj61lmf"]
+
+[ext_resource type="PackedScene" uid="uid://dv1kl4gvbd8iy" path="res://Game/Entities/Enemies/Boss.tscn" id="1_4opmo"]
+
+[node name="Boss_Room" type="Node2D" unique_id=836608506]
+
+[node name="Boss1" parent="." unique_id=1386017040 instance=ExtResource("1_4opmo")]
+position = Vector2(1144, 216)
+alpha = 0.10965589531015016
+
+[node name="Boss" parent="." unique_id=2139266635 instance=ExtResource("1_4opmo")]
+position = Vector2(224, 200)
+alpha = 0.10965903690280374
+
+[node name="Boss2" parent="." unique_id=502350528 instance=ExtResource("1_4opmo")]
+position = Vector2(656, 592)
+alpha = -0.10966217849545731

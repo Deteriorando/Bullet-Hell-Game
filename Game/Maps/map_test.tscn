@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cmfx6g2sx4lpu"]
+
+[ext_resource type="PackedScene" uid="uid://c842jk0ug6ldi" path="res://Game/Entities/player.tscn" id="1_khdq6"]
+[ext_resource type="PackedScene" uid="uid://dv1kl4gvbd8iy" path="res://Game/Entities/Enemies/Boss.tscn" id="2_314no"]
+[ext_resource type="Script" uid="uid://d27hyi16c6fa" path="res://Scripts/GameSystem/Entities/PlayerSystem/PlayerStats.cs" id="2_ui68g"]
+[ext_resource type="PackedScene" uid="uid://dkavlha2g34yi" path="res://Game/Entities/regenerator.tscn" id="4_v8hyq"]
+
+[sub_resource type="Resource" id="Resource_v8hyq"]
+script = ExtResource("2_ui68g")
+metadata/_custom_type_script = "uid://d27hyi16c6fa"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_khdq6"]
+size = Vector2(64, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_314no"]
+size = Vector2(1280, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ui68g"]
+size = Vector2(48, 720)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8hyq"]
+size = Vector2(49.806458, 1280)
+
+[node name="MapTest" type="Node2D" unique_id=1656696855]
+position = Vector2(1, 0)
+
+[node name="Player" parent="." unique_id=902681880 instance=ExtResource("1_khdq6")]
+position = Vector2(640, 360)
+collision_layer = 24
+playerStats = SubResource("Resource_v8hyq")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1886934863]
+position = Vector2(640, 360)
+
+[node name="Paredes" type="Node2D" parent="." unique_id=121496906]
+
+[node name="Parede 1" type="StaticBody2D" parent="Paredes" unique_id=1276139480]
+light_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Parede 1" unique_id=829794540]
+light_mask = 2
+position = Vector2(-32, 360)
+shape = SubResource("RectangleShape2D_khdq6")
+
+[node name="Parede 2" type="StaticBody2D" parent="Paredes" unique_id=761806745]
+light_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Parede 2" unique_id=2043490243]
+light_mask = 2
+position = Vector2(640, 744)
+shape = SubResource("RectangleShape2D_314no")
+
+[node name="Parede 3" type="StaticBody2D" parent="Paredes" unique_id=414118487]
+light_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Parede 3" unique_id=589877712]
+light_mask = 2
+position = Vector2(1304, 360)
+shape = SubResource("RectangleShape2D_ui68g")
+
+[node name="Parede 4" type="StaticBody2D" parent="Paredes" unique_id=987511942]
+light_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Parede 4" unique_id=2036991272]
+position = Vector2(640, -31.999989)
+rotation = -1.5707964
+scale = Vector2(1.24, 1)
+shape = SubResource("RectangleShape2D_v8hyq")
+
+[node name="Boss" parent="." unique_id=1386017040 instance=ExtResource("2_314no")]
+position = Vector2(280, 223)
+
+[node name="Regenerator" parent="." unique_id=518873787 instance=ExtResource("4_v8hyq")]
+position = Vector2(992, 216)

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b1ulayieo487a"]
+
+[ext_resource type="Script" uid="uid://6nq1epct3x2b" path="res://Scripts/GameSystem/Entities/BulletSystem/Bullet.cs" id="1_1c78t"]
+[ext_resource type="Texture2D" uid="uid://c834dn7k4fdhn" path="res://Game/Assets/Enemies/Bullet.png" id="2_f3d50"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f3d50"]
+radius = 16.0
+
+[node name="Bullet" type="Area2D" unique_id=969475379]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_1c78t")
+Speed = 500
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1021539168]
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("2_f3d50")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1564780477]
+position = Vector2(-8, 8)
+rect = Rect2(-8, -24, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1794846435]
+shape = SubResource("CircleShape2D_f3d50")
+
+[connection signal="body_entered" from="." to="." method="player_damage"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="on_bullet_exited"]

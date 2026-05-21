@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c842jk0ug6ldi"]
+
+[ext_resource type="Script" uid="uid://6vewiiot1bxd" path="res://Scripts/GameSystem/Entities/PlayerSystem/Player.cs" id="1_ipj5g"]
+[ext_resource type="Texture2D" uid="uid://e5i2vkh06ig8" path="res://Game/Assets/Player/Background azul.png" id="2_ipj5g"]
+[ext_resource type="Script" uid="uid://d27hyi16c6fa" path="res://Scripts/GameSystem/Entities/PlayerSystem/PlayerStats.cs" id="2_xl6mj"]
+[ext_resource type="Script" uid="uid://ckmjekqd8ad2j" path="res://Scripts/GameSystem/Interface/Graphic/LifeInterface.cs" id="4_rm32f"]
+
+[sub_resource type="Resource" id="Resource_rm32f"]
+script = ExtResource("2_xl6mj")
+metadata/_custom_type_script = "uid://d27hyi16c6fa"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipj5g"]
+size = Vector2(32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rm32f"]
+
+[node name="Player" type="CharacterBody2D" unique_id=864667751]
+collision_layer = 28
+script = ExtResource("1_ipj5g")
+playerStats = SubResource("Resource_rm32f")
+
+[node name="Colision" type="CollisionShape2D" parent="." unique_id=2114422404]
+shape = SubResource("RectangleShape2D_ipj5g")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1711357456]
+scale = Vector2(1.0625, 1.0625)
+texture = ExtResource("2_ipj5g")
+
+[node name="Player" type="Node2D" parent="." unique_id=902681880]
+
+[node name="Vulnerabilidade" type="Timer" parent="." unique_id=1387713032]
+wait_time = 0.5
+
+[node name="Life" type="Label" parent="." unique_id=1607506308]
+offset_left = -36.0
+offset_top = -64.0
+offset_right = 36.0
+offset_bottom = -41.0
+label_settings = SubResource("LabelSettings_rm32f")
+script = ExtResource("4_rm32f")
+
+[connection signal="timeout" from="Vulnerabilidade" to="." method="cooldown_can_damage"]

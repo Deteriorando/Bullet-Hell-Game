@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dkavlha2g34yi"]
+
+[ext_resource type="Script" uid="uid://cjj0b2jw27kb1" path="res://Scripts/GameSystem/Entities/PlayerSystem/Regenerator.cs" id="1_e8m0l"]
+[ext_resource type="Texture2D" uid="uid://cduweaw6rukue" path="res://Game/Assets/Enemies/Regenerator.png" id="2_1xs7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ey6e"]
+size = Vector2(26.5, 26.5)
+
+[node name="Regenerator" type="Area2D" unique_id=518873787]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_e8m0l")
+
+[node name="Colision" type="CollisionShape2D" parent="." unique_id=1403655546]
+shape = SubResource("RectangleShape2D_2ey6e")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1883542036]
+position = Vector2(0.5000018, -0.5000005)
+scale = Vector2(1.8125001, 1.8125)
+texture = ExtResource("2_1xs7e")
+
+[connection signal="body_entered" from="." to="." method="restore_life"]
