@@ -13,7 +13,7 @@ public abstract partial class State : Node
     {
         FSM = GetParent<FiniteStateMachine>();
         enemy = FSM.GetParent<Enemy>();
-        
+
         Player = GetTree().GetFirstNodeInGroup("player") as CharacterBody2D;
     }
 

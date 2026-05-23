@@ -11,7 +11,7 @@ public partial class AttackBurstState : AttackState
         {
             float angle = i * Mathf.Tau / BulletCount;
             Vector2 dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-            
+
             enemy.Shoot(angle);
         }
 
