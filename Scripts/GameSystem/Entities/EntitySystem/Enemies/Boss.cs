@@ -31,7 +31,7 @@ public partial class Boss : Enemy
     private Vector2 GetAngle(float angle)
     {
         return new Vector2(
-			Mathf.Cos(angle), 
+			Mathf.Cos(angle),
 			Mathf.Sin(angle))
 			.Normalized();
     }
