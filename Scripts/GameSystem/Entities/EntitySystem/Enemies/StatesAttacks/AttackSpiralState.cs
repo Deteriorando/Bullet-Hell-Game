@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class AttackSpiralState : AttackState
+public partial class AttackSpiralState : AttackStateManager
 {
 
     protected override void ExecuteAttack()

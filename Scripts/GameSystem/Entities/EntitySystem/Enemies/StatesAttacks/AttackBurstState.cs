@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class AttackBurstState : AttackState
+public partial class AttackBurstState : AttackStateManager
 {
     [Export]
     private int BulletCount = 12;

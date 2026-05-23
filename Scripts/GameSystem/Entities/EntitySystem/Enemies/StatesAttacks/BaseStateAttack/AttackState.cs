@@ -1,6 +1,6 @@
 using Godot;
 
-public abstract partial class AttackState : State
+public abstract partial class AttackStateManager : State
 {
     [Export]
     protected Timer CooldownTimer;

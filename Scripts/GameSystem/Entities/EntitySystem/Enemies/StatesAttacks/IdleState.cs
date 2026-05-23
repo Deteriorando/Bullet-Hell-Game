@@ -20,6 +20,6 @@ public partial class IdleState : State
 
     private void OnIdleTimeout()
     {
-        FSM.ChangeState(FSM.GetState("AttackSquareState"));
+        FSM.ChangeState(FSM.GetState("AttackBurstState"));
     }
 }
